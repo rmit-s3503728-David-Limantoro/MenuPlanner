@@ -32,9 +32,51 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
+  /////////////////////
+  //// Page Routes ////
+  /////////////////////
+
+  'GET /': {
     view: 'homepage'
-  }
+  },
+
+  ///////////////////////////
+  //// Controller Routes ////
+  ///////////////////////////
+
+  // Recipe Controller routes
+
+  'POST /recipe': {
+    controller: 'RecipeController',
+    action: 'newRecipe'
+  },
+
+  'PUT /recipe': {
+    controller: 'RecipeController',
+    action: 'updateRecipe'
+  },
+
+  'DELETE /recipe': {
+    controller: 'RecipeController',
+    action: 'deleteRecipe'
+  },
+
+  // Search Controller routes
+
+  'GET /search': {
+    controller: 'SearchController',
+    action: 'simpleSearch'
+  },
+
+  'GET /search/adv': {
+    controller: 'SearchController',
+    action: 'advancedSearch'
+  },
+
+  'GET /search/all': {
+    controller: 'SearchController',
+    action: 'dumpAll'
+  },
 
   /***************************************************************************
   *                                                                          *
