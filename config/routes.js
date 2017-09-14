@@ -63,17 +63,17 @@ module.exports.routes = {
 
   // Search Controller routes
 
-  'GET /search': {
+  'POST /search': {
     controller: 'SearchController',
     action: 'simpleSearch'
   },
 
-  'GET /search/adv': {
+  'POST /search/adv': {
     controller: 'SearchController',
     action: 'advancedSearch'
   },
 
-  'GET /search/all': {
+  'POST /search/all': {
     controller: 'SearchController',
     action: 'dumpAll'
   },

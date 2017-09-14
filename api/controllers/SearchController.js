@@ -13,15 +13,15 @@ module.exports = {
   },
 
   simpleSearch: function (req, res) {
-    res.send(200, { message: "Simple Search" });
+    res.send(200, { message: "Simple Search", body: req.body });
   },
 
   advancedSearch: function (req, res) {
-    res.send(200, { message: "Advanced Search" });
+    res.send(200, { message: "Advanced Search", body: req.body });
   },
 
   dumpAll: function (req, res) {
-    res.send(200, { message: "Dump all recipes" });
+    res.send(200, { message: "Dump all recipes", body: req.body });
   },
 };
 
