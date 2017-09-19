@@ -12,13 +12,14 @@ AWS.config.update({
   region: "us-west-2", //oregon region
   endpoint: "https://dynamodb.us-west-2.amazonaws.com"
 });
-var dynamodb = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
-var s3 = new AWS.S3();
-s3.abortMultipartUpload(params, function (err, data) {
-  if (err) console.log(err, err.stack); // an error occurred
-  else     console.log(data);           // successful response
-});
+// var s3 = new AWS.S3();
+// s3.abortMultipartUpload(params, function (err, data) {
+//   if (err) console.log(err, err.stack); // an error occurred
+//   else     console.log(data);           // successful response
+// });
+
+var formidable = require('formidable');
 
 module.exports = {
   _config: {
@@ -29,17 +30,24 @@ module.exports = {
 
   newRecipe: function (req, res) {
     console.log(req.body);
+    var body_title = req.body.title;
+    var body_level = req.body.level;
+    var body_yield = req.body.yield;
+    var body_intro = req.body.intro;
+    var body_ingredients = req.body.ingredients;
+    var body_direction = req.body.direction;
     res.send(200, { message: "Create a new recipe", body: req.body });
   },
 
   updateRecipe: function (req, res) {
     console.log(req.body);
+    var body_title = req.body.title;
+    var body_level = req.body.level;
+    var body_yield = req.body.yield;
+    var body_intro = req.body.intro;
+    var body_ingredients = req.body.ingredients;
+    var body_direction = req.body.direction;
     res.send(200, { message: "Update existing recipe", body: req.body });
   },
-
-  // deleteRecipe: function (req, res) {
-  //   console.log(req.body);
-  //   res.send(200, { message: "Delete existing recipe", body: req.body });
-  // },
 };
 
