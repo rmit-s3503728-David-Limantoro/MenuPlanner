@@ -5,6 +5,15 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+var AWS = require("aws-sdk");
+var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
+AWS.config.credentials = credentials;
+AWS.config.update({
+  region: "us-west-2", //oregon region
+  endpoint: "https://dynamodb.us-west-2.amazonaws.com"
+});
+var dynamodb = new AWS.DynamoDB();
+
 module.exports = {
   _config: {
     actions: false,
@@ -13,15 +22,18 @@ module.exports = {
   },
 
   newRecipe: function (req, res) {
+    console.log(req.body);
     res.send(200, { message: "Create a new recipe", body: req.body });
   },
 
   updateRecipe: function (req, res) {
+    console.log(req.body);
     res.send(200, { message: "Update existing recipe", body: req.body });
   },
 
-  deleteRecipe: function (req, res) {
-    res.send(200, { message: "Delete existing recipe", body: req.body });
-  },
+  // deleteRecipe: function (req, res) {
+  //   console.log(req.body);
+  //   res.send(200, { message: "Delete existing recipe", body: req.body });
+  // },
 };
 
