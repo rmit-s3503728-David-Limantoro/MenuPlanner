@@ -1,3 +1,5 @@
+/*header*/
+
 #header {
 width:100%;
 height:100%;
@@ -12,6 +14,8 @@ list-style-type: none;
 background: linear-gradient(to right, #C7D8C6 0%,#EFD9C1 100%);
 }
 
+
+/*navigation*/
 nav {
   display: flex;
   flex-direction:row;
@@ -93,19 +97,7 @@ nav a:hover::after {
   color: #00B4CC;
 }
 
-.searchButton {
-  position: absolute;  
-  right: -50px;
-  width: 40px;
-  height: 36px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
-  text-align: center;
-  color: #000;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 20px;
-}
+/*homepage*/
 
 #HomePage {
 background-size: 100% 100%;
@@ -121,6 +113,62 @@ padding: 0px;
 }
 
 
+
+
+
+
+
+
+
+/*uploadpage*/
+
+.uploadform {
+    padding: 1%;
+}
+
+
+
+.uploadform input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #00B4CC;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.clearbtn {
+    padding: 14px 20px;
+    background-color: red;
+}
+.clearbtn,.uploadbtn{
+float: left;
+width: 50%;
+}
+
+@media screen and (max-width: 300px) {
+  .clearbtn, .uploadbtn {
+     width: 100%;
+  }
+}
+
+.clearform::after{
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*footer*/
 #footer {
 border-top:solid 5px #888888;    
 border-bottom:solid 5px #DAA400; 
@@ -129,7 +177,6 @@ margin-top: 0px;
 clear:both;
 background: linear-gradient(to top, #CCC8C6 0%,#A9B7C0 100%);
 color: #FFFFFF;
-
 position:static;
 
 }

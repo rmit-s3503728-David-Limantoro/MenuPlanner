@@ -39,6 +39,14 @@ module.exports.routes = {
   'GET /': {
     view: 'homepage'
   },
+    
+  'GET /recipe': {
+    view: 'recipe'
+  },
+    
+  'GET /upload': {
+    view: 'upload'
+  },    
 
   ///////////////////////////
   //// Controller Routes ////
