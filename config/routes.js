@@ -52,6 +52,13 @@ module.exports.routes = {
   //// Controller Routes ////
   ///////////////////////////
 
+  // Install routes
+
+  'GET /init': {
+    controller: 'DBInitController',
+    action: 'init'
+  },
+
   // Recipe Controller routes
 
   'POST /recipe': {
