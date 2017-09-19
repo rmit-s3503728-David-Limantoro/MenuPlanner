@@ -63,24 +63,19 @@ module.exports.routes = {
     action: 'updateRecipe'
   },
 
-  'DELETE /recipe': {
-    controller: 'RecipeController',
-    action: 'deleteRecipe'
-  },
-
   // Search Controller routes
+
+  'POST /search/specific': {
+    controller: 'SearchController',
+    action: 'getSpecificRecipe'
+  },
 
   'POST /search': {
     controller: 'SearchController',
     action: 'simpleSearch'
   },
 
-  'POST /search/adv': {
-    controller: 'SearchController',
-    action: 'advancedSearch'
-  },
-
-  'POST /search/all': {
+  'POST /showAll': {
     controller: 'SearchController',
     action: 'dumpAll'
   },
