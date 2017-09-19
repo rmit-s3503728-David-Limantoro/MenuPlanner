@@ -1,0 +1,144 @@
+#header {
+width:100%;
+height:100%;
+margin-top: 0;
+padding-top: 0;
+color:deeppink;
+letter-spacing:0;
+font-size: 80px;
+font-weight: 800;
+text-align:center;
+list-style-type: none;
+background: linear-gradient(to right, #C7D8C6 0%,#EFD9C1 100%);
+}
+
+nav {
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+background: linear-gradient(to top, #A9B7C0 0%, #CCC8C6 100%);
+}
+
+nav a {
+    
+  text-decoration: none;
+  font-size: 25px;
+  color: deeppink;
+  position: relative;
+  transition: all .2s;
+  overflow: hidden;
+margin-right:2%;
+}
+nav a:hover {
+  color: #000000;
+}
+nav a:last-child {
+  margin-bottom: 0px;
+}
+
+nav a::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #eb2141;
+  z-index: 99;
+  transition: all .4s cubic-bezier(0.7, 0, 0.3, 1);
+}
+nav a:hover::before {
+  left: 100%;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  margin-top: -2px;
+  left: 100%;
+  width: 100%;
+  height: 4px;
+  background: #eb2141;
+  transition: all .3s;
+  transition-delay: .4s;
+}
+nav a:hover::after {
+  left: 0%;
+}
+
+
+.search {
+  width: 30%;
+  position: relative;
+  float:right;
+    
+}
+
+.searchTerm {
+  float: left;
+  width: 100%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  position: absolute;  
+  right: -50px;
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#HomePage {
+background-size: 100% 100%;
+background-repeat: no-repeat;
+background-position: center;
+background-image: url("");
+height:100%;
+width:100%;
+margin: 0px;
+padding: 0px;
+
+
+}
+
+
+#footer {
+border-top:solid 5px #888888;    
+border-bottom:solid 5px #DAA400; 
+text-align:center;
+margin-top: 0px;
+clear:both;
+background: linear-gradient(to top, #CCC8C6 0%,#A9B7C0 100%);
+color: #FFFFFF;
+
+position:static;
+
+}
+
+#footer ul{
+    list-style-type: none;
+}
+
+#footer img {
+width:25;
+height:25;}
+
