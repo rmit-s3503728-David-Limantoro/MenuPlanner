@@ -37,7 +37,7 @@ module.exports.routes = {
   /////////////////////
 
   'GET /': {
-    view: 'recipe'
+    view: 'homepage'
   },
 
   ///////////////////////////
