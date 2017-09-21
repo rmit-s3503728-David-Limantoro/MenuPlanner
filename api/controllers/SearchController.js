@@ -6,7 +6,7 @@
  */
 
 var AWS = require("aws-sdk");
-var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
+var credentials = new AWS.SharedIniFileCredentials({ profile: 'default' });
 AWS.config.credentials = credentials;
 AWS.config.update({
   region: "us-west-2", //oregon region
@@ -29,23 +29,56 @@ module.exports = {
 
   getSpecificRecipe: function (req, res) {
     var recipeID = req.body.recipeID;
-    res.send(200, { message: "Get specific recipe", body: req.body });
+    var params = {
+      TableName: "RecipeTable",
+      Key: {
+        recipeID: recipeID,
+      }
+    };
+    docClient.query(params, function (err, data) {
+      console.log(err);
+      console.log(data);
+      if (err) {
+        res.send(400, { message: "Problem accessing database" });
+      } else {
+        res.send(200, { message: "All recipes dumped", data: data });
+      }
+    });
   },
 
   simpleSearch: function (req, res) {
-    res.send(200, { message: "Simple Search", body: req.body });
+    var params = {
+      TableName: "RecipeTable",
+      //TODO
+    };
+    docClient.scan(params, function (err, data) {
+      if (err) {
+        res.send(400, { message: "Problem accessing database" });
+      } else {
+        res.send(200, { message: "All recipes dumped", data: data });
+      }
+    });
+  },
+
+  dumpAll: function (req, res) {
+    var params = {
+      TableName: "RecipeTable",
+    };
+    docClient.scan(params, function (err, data) {
+      if (err) {
+        res.send(400, { message: "Problem accessing database" });
+      } else {
+        res.send(200, { message: "All recipes dumped", data: data });
+      }
+    });
+  },
+
+  loadRecipe: function (req, res) {
+    res.send(200, { message: "Show recipes, only their ID and their titles", body: req.body });
   },
 
   // advancedSearch: function (req, res) {
   //   res.send(200, { message: "Advanced Search", body: req.body });
   // },
-
-  dumpAll: function (req, res) {
-    res.send(200, { message: "Dump all recipes", body: req.body });
-  },
-  
-  loadRecipe: function (req, res) {
-    res.send(200, { message: "Show recipes, only their ID and their titles", body: req.body });
-  },
 };
 

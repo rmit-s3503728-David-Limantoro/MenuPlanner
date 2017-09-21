@@ -17,11 +17,9 @@ var recipeTableParams = {
   TableName: "RecipeTable",
   KeySchema: [
     { AttributeName: "recipeID", KeyType: "HASH" },
-    { AttributeName: "title", KeyType: "RANGE" },
   ],
   AttributeDefinitions: [
     { AttributeName: "recipeID", AttributeType: "S" },
-    { AttributeName: "title", AttributeType: "S" },
   ],
   ProvisionedThroughput: {
     ReadCapacityUnits: 10,
