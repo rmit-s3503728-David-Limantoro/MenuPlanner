@@ -29,8 +29,6 @@ module.exports = {
   },
 
   newRecipe: function (req, res) {
-
-
     req.file('avatar').upload({
       maxBytes: 10000000,
       dirname: './my-dir'
@@ -60,9 +58,6 @@ module.exports = {
       var body_introduction = req.body.introduction;
       var body_ingredients = req.body.ingredients;
       var body_direction = req.body.direction;
-
-      body_ingredients = body_ingredients.split(',');
-      body_direction = body_direction.replace(/\r/g, '\n').replace(/\n\n/g, '\n').split('\n');
 
       var item = {
         recipeID: uuid.v4(),

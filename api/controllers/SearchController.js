@@ -12,13 +12,9 @@ AWS.config.update({
   region: "us-west-2", //oregon region
   endpoint: "https://dynamodb.us-west-2.amazonaws.com"
 });
-var dynamodb = new AWS.DynamoDB();
 var docClient = new AWS.DynamoDB.DocumentClient();
-// var s3 = new AWS.S3();
-// s3.abortMultipartUpload(params, function (err, data) {
-//   if (err) console.log(err, err.stack); // an error occurred
-//   else     console.log(data);           // successful response
-// });
+
+var tblName = "RecipeTable";
 
 module.exports = {
   _config: {
@@ -30,55 +26,101 @@ module.exports = {
   getSpecificRecipe: function (req, res) {
     var recipeID = req.body.recipeID;
     var params = {
-      TableName: "RecipeTable",
-      Key: {
-        recipeID: recipeID,
+      TableName: tblName,
+      KeyConditionExpression: 'recipeID = :v1',
+      ExpressionAttributeValues: {
+        ':v1': 'recipeID',
       }
     };
     docClient.query(params, function (err, data) {
-      console.log(err);
-      console.log(data);
       if (err) {
-        res.send(400, { message: "Problem accessing database" });
+        res.send(400, { errorMsg: err });
       } else {
-        res.send(200, { message: "All recipes dumped", data: data });
+        res.send(200, { data: data });
       }
     });
   },
 
   simpleSearch: function (req, res) {
+    var withoutRedirect = req.body.withoutRedirect;
+    var searchTerm = req.body.searchTerm;
     var params = {
-      TableName: "RecipeTable",
-      //TODO
+      TableName: tblName,
+      ConditionalOperator: "OR",
+      ScanFilter: {
+        'ingredients': {
+          ComparisonOperator: "CONTAINS",
+          AttributeValueList: [
+            searchTerm
+          ]
+        },
+        'introduction': {
+          ComparisonOperator: "CONTAINS",
+          AttributeValueList: [
+            searchTerm
+          ]
+        },
+        'direction': {
+          ComparisonOperator: "CONTAINS",
+          AttributeValueList: [
+            searchTerm
+          ]
+        },
+        'title': {
+          ComparisonOperator: "CONTAINS",
+          AttributeValueList: [
+            searchTerm
+          ]
+        },
+      },
     };
     docClient.scan(params, function (err, data) {
       if (err) {
-        res.send(400, { message: "Problem accessing database" });
+        res.send(400, { errorMsg: err });
       } else {
-        res.send(200, { message: "All recipes dumped", data: data });
+        if (withoutRedirect) {
+          res.send(200, { result: data })
+        } else {
+          res.redirect("/searchResult", { result: data });
+        }
       }
     });
   },
-
+  
   dumpAll: function (req, res) {
     var params = {
-      TableName: "RecipeTable",
+      TableName: tblName,
     };
     docClient.scan(params, function (err, data) {
       if (err) {
-        res.send(400, { message: "Problem accessing database" });
+        res.send(400, { errorMsg: err });
       } else {
-        res.send(200, { message: "All recipes dumped", data: data });
+        res.send(200, { data: data });
       }
     });
   },
 
   loadRecipe: function (req, res) {
-    res.send(200, { message: "Show recipes, only their ID and their titles", body: req.body });
+    var params = {
+      TableName: tblName,
+    };
+    docClient.scan(params, function (err, data) {
+      if (err) {
+        res.send(400, { errorMsg: err });
+      } else {
+        for (i = 0; i < data.Items.length; i++) {
+          result.push({
+            recipeID: data.Items[i].recipeID,
+            title: data.Items[i].title,
+            introduction: data.Items[i].introduction
+          });
+        }
+        res.send(200, { result: result });
+      }
+    });
   },
 
   // advancedSearch: function (req, res) {
   //   res.send(200, { message: "Advanced Search", body: req.body });
   // },
 };
-
