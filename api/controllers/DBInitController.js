@@ -20,7 +20,7 @@ var recipeTableParams = {
     { AttributeName: "title", KeyType: "RANGE" },
   ],
   AttributeDefinitions: [
-    { AttributeName: "recipeID", AttributeType: "N" },
+    { AttributeName: "recipeID", AttributeType: "S" },
     { AttributeName: "title", AttributeType: "S" },
   ],
   ProvisionedThroughput: {
@@ -41,10 +41,8 @@ module.exports = {
     // Create table if it doesn't exist yet
     dynamodb.createTable(recipeTableParams, function (err, data) {
       if (err) {
-        console.error("Unable to create table. Error JSON:", JSON.stringify(err, null, 2));
         res.send(400, { message: "Table already exists" });
       } else {
-        console.log("Created table. Table description JSON:", JSON.stringify(data, null, 2));
         res.send(200, { message: "Created recipe table" });
       }
     });

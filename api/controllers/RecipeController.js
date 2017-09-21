@@ -6,7 +6,7 @@
  */
 
 var AWS = require("aws-sdk");
-var credentials = new AWS.SharedIniFileCredentials({profile: 'default'});
+var credentials = new AWS.SharedIniFileCredentials({ profile: 'default' });
 AWS.config.credentials = credentials;
 AWS.config.update({
   region: "us-west-2", //oregon region
@@ -20,6 +20,7 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 // });
 
 var formidable = require('formidable');
+var uuid = require('node-uuid');
 
 module.exports = {
   _config: {
@@ -29,25 +30,74 @@ module.exports = {
   },
 
   newRecipe: function (req, res) {
-    console.log(req.body);
-    var body_title = req.body.title;
-    var body_level = req.body.level;
-    var body_yield = req.body.yield;
-    var body_intro = req.body.intro;
-    var body_ingredients = req.body.ingredients;
-    var body_direction = req.body.direction;
-    res.send(200, { message: "Create a new recipe", body: req.body });
+    req.file('avatar').upload({
+      // don't allow the total upload size to exceed ~10MB
+      maxBytes: 10 * 1000 * 1000
+    }, function whenDone(err, uploadedFiles) {
+      if (err) {
+        return res.negotiate(err);
+      }
+
+      // If no files were uploaded, respond with an error.
+      console.log(uploadedFiles);
+
+      // // Save the "fd" and the url where the avatar for a user can be accessed
+      // User.update(req.session.me, {
+      //   // Generate a unique URL where the avatar can be downloaded.
+      //   avatarUrl: require('util').format('%s/user/avatar/%s', sails.config.appUrl, req.session.me),
+      //   // Grab the first file and use it's `fd` (file descriptor)
+      //   avatarFd: uploadedFiles[0].fd
+      // }).exec(function (err) {
+      //   if (err) return res.negotiate(err);
+      //   return res.ok();
+      // });
+
+      var body_title = req.body.title;
+      var body_level = req.body.level;
+      var body_yield = req.body.yield;
+      var body_introduction = req.body.introduction;
+      var body_ingredients = req.body.ingredients;
+      var body_direction = req.body.direction;
+
+      body_ingredients = body_ingredients.split(',');
+      body_direction = body_direction.replace(/\r/g, '\n').replace(/\n\n/g, '\n').split('\n');
+
+      var item = {
+        recipeID: uuid.v4(),
+        title: body_title,
+        level: body_level,
+        yield: body_yield,
+        introduction: body_introduction,
+        ingredients: body_ingredients,
+        direction: body_direction,
+      }
+
+      var params = {
+        TableName: "RecipeTable",
+        Item: item
+      };
+
+      //TODO check if similar recipe exists?
+
+      docClient.put(params, function (err, data) {
+        if (err) {
+          res.redirect("/upload?uploadSuccess=false");
+        } else {
+          res.redirect("/upload?uploadSuccess=true");
+        }
+      });
+    });
   },
 
-  updateRecipe: function (req, res) {
-    console.log(req.body);
-    var body_title = req.body.title;
-    var body_level = req.body.level;
-    var body_yield = req.body.yield;
-    var body_intro = req.body.intro;
-    var body_ingredients = req.body.ingredients;
-    var body_direction = req.body.direction;
-    res.send(200, { message: "Update existing recipe", body: req.body });
-  },
+  // updateRecipe: function (req, res) {
+  //   console.log(req.body);
+  //   var body_title = req.body.title;
+  //   var body_level = req.body.level;
+  //   var body_yield = req.body.yield;
+  //   var body_intro = req.body.intro;
+  //   var body_ingredients = req.body.ingredients;
+  //   var body_direction = req.body.direction;
+  //   res.send(200, { message: "Update existing recipe", body: req.body });
+  // },
 };
 
