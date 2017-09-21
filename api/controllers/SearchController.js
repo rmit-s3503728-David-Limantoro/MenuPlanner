@@ -27,6 +27,11 @@ module.exports = {
     rest: false
   },
 
+  getSpecificRecipe: function (req, res) {
+    var recipeID = req.body.recipeID;
+    res.send(200, { message: "Get specific recipe", body: req.body });
+  },
+
   simpleSearch: function (req, res) {
     res.send(200, { message: "Simple Search", body: req.body });
   },
@@ -37,6 +42,10 @@ module.exports = {
 
   dumpAll: function (req, res) {
     res.send(200, { message: "Dump all recipes", body: req.body });
+  },
+  
+  loadRecipe: function (req, res) {
+    res.send(200, { message: "Show recipes, only their ID and their titles", body: req.body });
   },
 };
 

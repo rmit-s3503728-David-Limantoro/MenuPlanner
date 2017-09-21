@@ -1,5 +1,4 @@
 <header id="header">
-
     Food Recipe
 </header>
 
@@ -8,7 +7,6 @@
 <body id="HomePage">
     <div>
         <nav>
-
             <a href="/" target="_self">
             <span>Home</span></a>
             <a href="/upload" target="_self">
@@ -16,122 +14,79 @@
             <a href="/recipe" target="_self">
             <span>Recipe</span></a>
 
-
             <div class="search">
                 <input type="text" class="searchTerm" placeholder="What are you looking for?">
-
             </div>
-
         </nav>
     </div>
 
 
-    <form action="">
+    <form action="/recipe" method="POST">
         <div class="uploadform">
             <label><b>Title</b></label>
-            <input type="text" placeholder="Enter Title" name="title" required>
-
-
+            <input type="text" placeholder="What is the name of your recipe" name="title" required>
 
             <label><b>Level</b></label>
             <select name="level" required>
-            <option value="Easy">Easy</option>
-            <option value="Moderate">Moderate</option>
-            <option value="Hard">Hard</option>
-            </select>
-            <br>
-            <br>
-
+                <option value="Easy">Easy</option>
+                <option value="Moderate">Moderate</option>
+                <option value="Hard">Hard</option>
+            </select><br><br>
 
             <label><b>Yield</b></label>
             <select name="yield" required>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option>
+                <option value="1">1 serving</option>
+                <option value="2">2 servings</option>
+                <option value="3">3 servings</option>
+                <option value="4">4 servings</option>
+                <option value="5">5 servings</option>
+                <option value="6">6 servings</option>
+                <option value="7">7 servings</option>
+                <option value="8">8 servings</option>
+                <option value="9">9 servings</option>
+                <option value="10">10 servings</option>
+                <option value="11">11 servings</option>
+                <option value="12">12 servings</option>
             </select><br><br>
 
-
-
-
-
             <label><b>Introduction</b></label>
-            <input type="text" placeholder="Enter Intoduction" name="introduction" required>
+            <input type="text" placeholder="Introduce your recipe" name="introduction" required>
 
             <label><b>Ingredients</b></label>
-            <input type="text" type="text" placeholder="Enter Ingredients" name="ingredients" required>
+            <input type="text" type="text" placeholder="What ingredients are needed (separate with comma)" name="ingredients" required>
            
-
             <label><b>Directions</b></label>
-            <input type="text" placeholder="Enter Step1" name="step1" required>
+            <textarea type="textarea" placeholder="Tell us how to make this recipe" name="direction" required></textarea>
 
-            <label><b>step2</b></label>
-            <input type="text" placeholder="Enter step2" name="step2" required>
-
-            <label><b>step3</b></label>
-            <input type="text" placeholder="Enter step3" name="step3" required>
-
-            <label><b>step4</b></label>
-            <input type="text" placeholder="Enter step4" name="step4">
-
-            <label><b>step5</b></label>
-            <input type="text" placeholder="Enter step5" name="step5">
-
-            <label><b>step6</b></label>
-            <input type="text" placeholder="Enter step6" name="step6">
-
-            <label><b>step7</b></label>
-            <input type="text" placeholder="Enter step7" name="step7">
-
-            <label><b>step8</b></label>
-            <input type="text" placeholder="Enter step8" name="step8">
-
-
+            <br><br><label><b>Picture of the finished recipe: </b></label>
+            <br><input type="file" name="file">
 
             <div class="clearform">
                 <button onclick="clearInputs()" type="button" class="clearbtn">Clear</button>
                 <button type="submit" class="uploadbtn">Upload</button>
             </div>
 
-
-
         </div>
-
-
-
-
-
     </form>
-
-
-
-
-
-
-
-
 </body>
 
 
 <div id="footer">
     <footer>
-
         <ul>
             <li>Click <a href="#top"><img src="https://png.icons8.com/north-direction/office/25" title="Go Top" ></a> to see
                 the top of this page</li>
             <li>Please contact <a href="mailto:s3510520@student.rmit.edu.au.com">Yan</a> for more deatils</li>
-
         </ul>
     </footer>
 </div>
 
-
-    <script>
-        function clearInputs(){
-            var inputs, index;
-
-            inputs = document.getElementsByTagName('input','textarea');
-            for (index = 0; index < inputs.length; ++index) {
-                inputs[index].value = '';
-            }
+<script>
+    function clearInputs(){
+        var inputs, index;
+        inputs = document.getElementsByTagName('input','textarea');
+        for (index = 0; index < inputs.length; ++index) {
+            inputs[index].value = '';
         }
-    </script>
+    }
+</script>
