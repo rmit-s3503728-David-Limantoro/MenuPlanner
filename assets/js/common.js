@@ -71,5 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         popupAlert("Recipe is uploaded successfully", "alert-ok");
     } else if (getUrlParameter('uploadSuccess') === "false") {
         popupAlert("There is a problem uploading the recipe", "alert-error");
+    } else if (getUrlParameter('filesize') === "invalid") {
+        popupAlert("The filesize is too big, please upload smaller picture", "alert-error");
     }
 }, false);

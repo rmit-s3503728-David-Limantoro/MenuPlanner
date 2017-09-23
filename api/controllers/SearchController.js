@@ -33,9 +33,9 @@ module.exports = {
     };
     docClient.query(params, function (err, data) {
       if (err) {
-        res.send(400, { errorMsg: err });
+        return res.send(400, { errorMsg: err });
       } else {
-        res.send(200, { data: data });
+        return res.send(200, { data: data });
       }
     });
   },
@@ -75,12 +75,12 @@ module.exports = {
     };
     docClient.scan(params, function (err, data) {
       if (err) {
-        res.send(400, { errorMsg: err });
+        return res.send(400, { errorMsg: err });
       } else {
         if (withoutRedirect === "true") {
-          res.send(200, { result: data })
+          return res.send(200, { result: data })
         } else {
-          res.view('result', {
+          return res.view('result', {
             result: data
           });
         }
@@ -94,9 +94,9 @@ module.exports = {
     };
     docClient.scan(params, function (err, data) {
       if (err) {
-        res.send(400, { errorMsg: err });
+        return res.send(400, { errorMsg: err });
       } else {
-        res.send(200, { data: data });
+        return res.send(200, { data: data });
       }
     });
   },
@@ -107,7 +107,7 @@ module.exports = {
     };
     docClient.scan(params, function (err, data) {
       if (err) {
-        res.send(400, { errorMsg: err });
+        return res.send(400, { errorMsg: err });
       } else {
         var result = [];
         for (i = 0; i < data.Items.length; i++) {
@@ -117,7 +117,7 @@ module.exports = {
             introduction: data.Items[i].introduction
           });
         }
-        res.send(200, { result: result });
+        return res.send(200, { result: result });
       }
     });
   },
