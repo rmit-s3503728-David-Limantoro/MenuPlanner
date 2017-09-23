@@ -13,7 +13,6 @@ AWS.config.update({
   endpoint: "https://dynamodb.us-west-2.amazonaws.com"
 });
 var docClient = new AWS.DynamoDB.DocumentClient();
-
 var tblName = "RecipeTable";
 
 module.exports = {
@@ -29,7 +28,7 @@ module.exports = {
       TableName: tblName,
       KeyConditionExpression: 'recipeID = :v1',
       ExpressionAttributeValues: {
-        ':v1': 'recipeID',
+        ':v1': recipeID,
       }
     };
     docClient.query(params, function (err, data) {
@@ -41,7 +40,7 @@ module.exports = {
     });
   },
 
-  simpleSearch: function (req, res) {
+  search: function (req, res) {
     var withoutRedirect = req.body.withoutRedirect;
     var searchTerm = req.body.searchTerm;
     var params = {
@@ -78,15 +77,17 @@ module.exports = {
       if (err) {
         res.send(400, { errorMsg: err });
       } else {
-        if (withoutRedirect) {
+        if (withoutRedirect === "true") {
           res.send(200, { result: data })
         } else {
-          res.redirect("/searchResult", { result: data });
+          res.view('result', {
+            result: data
+          });
         }
       }
     });
   },
-  
+
   dumpAll: function (req, res) {
     var params = {
       TableName: tblName,

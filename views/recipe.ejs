@@ -1,9 +1,6 @@
 <header id="header">
-
     Food Recipe
 </header>
-
-
 
 <body id="HomePage">
     <div>
@@ -14,33 +11,32 @@
             <a href="/upload" target="_self">
             <span>Upload</span></a>
             <a href="/recipe" target="_self">
-            <span>Recipe</span></a>
-            <a href="/result" target="_self">
-                <span>Result</span></a>
-
+            <span>All Recipe</span></a>
 
             <div class="search">
                 <form action="/search" method="POST">
-                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                    <input type="text" name="searchTerm" class="searchTerm" placeholder="What are you looking for?">
+                    <input name="withoutRedirect" value="false" style="display:none">
+                    <input type="submit" value="Submit" style="display:none">
                 </form>
             </div>
 
         </nav>
     </div>
 
-
-
-
     <div>
-
-        <table class="recipeform">
+        <table class="recipeform" style="width:90%; margin-left: auto; margin-right: auto; border-radius: 10px">
+            <col width="40%">
+            <col width="60%">
             <caption>Recipe List</caption>
             <tr>
                 <th colspan="2">Title</th>
             </tr>
 
             <tr>
-                <td colspan="2">$title</td>
+                <td colspan="2">
+                    <%= result.Items[0].title %>
+                </td>
             </tr>
 
             <tr>
@@ -49,8 +45,9 @@
 
             <tr>
                 <td colspan="2">
-                    <$img>
-                    </$img>
+                    <% if(result.Items[0].img) { %>
+                        <img src="<%= result.Items[i].img %>" />
+                    <% } %>
                 </td>
             </tr>
 
@@ -59,7 +56,9 @@
             </tr>
 
             <tr>
-                <td colspan="2">$introduction</td>
+                <td colspan="2">
+                    <%= result.Items[0].introduction %>
+                </td>
             </tr>
 
             <tr>
@@ -68,8 +67,12 @@
             </tr>
 
             <tr>
-                <td>$level</td>
-                <td>$yield</td>
+                <td>
+                    <%= result.Items[0].level %>
+                </td>
+                <td>
+                    <%= result.Items[0].yield %>
+                </td>
             </tr>
 
             <tr>
@@ -78,33 +81,25 @@
             </tr>
 
             <tr>
-                <th>$ingredient</th>
-                <th>$direction</th>
+                <th><label id="ingr_label"></label></th>
+                <th><label id="dir_label"></label></th>
             </tr>
         </table>
-
-
-
-
-
     </div>
-
-
-    </form>
-
-
-
-
 </body>
 
 
 <div id="footer">
     <footer>
-
         <ul>
             <li>Click <a href="#top"><img src="https://png.icons8.com/north-direction/office/25" title="Go Top" ></a> to see
                 the top of this page</li>
             <li>Please contact <a href="mailto:s3510520@student.rmit.edu.au.com">Yan</a> for more deatils</li>
-
         </ul>
     </footer>
+</div>
+
+<script>
+    document.getElementById("ingr_label").innerHTML = ingredientStringToArray(`<%= result.Items[0].ingredients %>`);
+    document.getElementById("dir_label").innerHTML = directionStringToArray(`<%= result.Items[0].direction %>`);
+</script>
