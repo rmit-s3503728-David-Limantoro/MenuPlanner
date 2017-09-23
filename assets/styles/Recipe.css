@@ -126,8 +126,6 @@ padding: 0px;
     padding: 1%;
 }
 
-
-
 .uploadform input[type=text] {
     width: 100%;
     padding: 12px 20px;
@@ -167,6 +165,33 @@ width: 50%;
   clear: both;
   display: table;
 }
+
+/*recipe*/
+
+.recipeform {
+text-align: center;
+font-size:30px;
+width:100%;
+height:auto;
+outline: 2px solid #00B4CC;
+border-collapse: collapse;
+padding: 12px 20px;
+margin: 8px 0;
+
+}
+
+.recipeform td, th{
+  border: 1px solid #A9B7C0;
+}
+
+.recipeform caption{
+  font-size:50px;
+  font-weight:700;
+  color: deeppink;
+}
+
+
+
 
 /*footer*/
 #footer {
