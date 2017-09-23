@@ -77,17 +77,17 @@ module.exports.routes = {
 
   // Search Controller routes
 
-  'POST /search/specific': {
+  'POST /get/specific': {
     controller: 'SearchController',
     action: 'getSpecificRecipe'
   },
 
   'POST /search': {
     controller: 'SearchController',
-    action: 'simpleSearch'
+    action: 'search'
   },
 
-  'POST /dump': {
+  'POST /dumpAll': {
     controller: 'SearchController',
     action: 'dumpAll'
   },

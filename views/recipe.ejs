@@ -7,7 +7,7 @@
 <body id="HomePage">
     <div>
         <nav>
-            
+
             <a href="/" target="_self">
             <span>Home</span></a>
             <a href="/upload" target="_self">
@@ -20,7 +20,8 @@
             <div class="search">
                 <form action="/search" method="POST">
                     <input type="text" name="searchTerm" class="searchTerm" placeholder="What are you looking for?">
-                    <input name="withoutRedirect" value="true" style="display:none">
+                    <input name="withoutRedirect" value="false" style="display:none">
+                    <input type="submit" value="Submit" style="display:none">
                 </form>
             </div>
 

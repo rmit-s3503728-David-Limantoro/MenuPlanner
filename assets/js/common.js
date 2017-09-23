@@ -41,17 +41,17 @@ function popupAlert(message, alert_classtype, extraFunction_before, extraFunctio
 }
 
 function ingredientStringToArray(stringData) {
-    return stringData.split(',').map(function (val) { return val.trim() });
+    return stringData.split(',').map(function (val) { return val.trim() }).filter(Boolean);
 }
 
 function directionStringToArray(stringData) {
-    return stringData.replace(/(\r\n)|(\n\r)/g, '\n').split('\n').map(function (val) { return val.trim() });
+    return stringData.replace(/(\r\n)|(\n\r)/g, '\n').split('\n').map(function (val) { return val.trim() }).filter(Boolean);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     if (getUrlParameter('uploadSuccess') === "true") {
-        popupAlert("Recipe is uploaded successfully", "");
+        popupAlert("Recipe is uploaded successfully", "alert-ok");
     } else if (getUrlParameter('uploadSuccess') === "false") {
-        popupAlert("There is a problem uploading the recipe", "");
+        popupAlert("There is a problem uploading the recipe", "alert-error");
     }
 }, false);

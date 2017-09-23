@@ -87,7 +87,6 @@ module.exports = {
   },
 
   updateRecipe: function (req, res) {
-    console.log(req.body);
     var body_title = req.body.title;
     var body_level = req.body.level;
     var body_yield = req.body.yield;

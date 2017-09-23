@@ -41,7 +41,7 @@ module.exports = {
     });
   },
 
-  simpleSearch: function (req, res) {
+  search: function (req, res) {
     var withoutRedirect = req.body.withoutRedirect;
     var searchTerm = req.body.searchTerm;
     var params = {
@@ -78,15 +78,17 @@ module.exports = {
       if (err) {
         res.send(400, { errorMsg: err });
       } else {
-        if (withoutRedirect) {
+        if (withoutRedirect === "true") {
           res.send(200, { result: data })
         } else {
-          res.redirect("/searchResult", { result: data });
+          res.view('result', {
+            result: data
+          });
         }
       }
     });
   },
-  
+
   dumpAll: function (req, res) {
     var params = {
       TableName: tblName,
