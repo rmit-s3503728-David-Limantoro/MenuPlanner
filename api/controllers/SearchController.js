@@ -108,6 +108,7 @@ module.exports = {
       if (err) {
         res.send(400, { errorMsg: err });
       } else {
+        var result = [];
         for (i = 0; i < data.Items.length; i++) {
           result.push({
             recipeID: data.Items[i].recipeID,

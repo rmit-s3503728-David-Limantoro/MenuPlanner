@@ -1,0 +1,15 @@
+
+#floatAlertDiv{
+	display: none;
+	position:fixed;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+    font-weight: 600;
+    padding: 20px 100px;
+    background:lightcyan;
+    border: 1px cyan solid;
+    color: deeppink;
+    font-size: large;
+    border-radius: 8px;
+}
