@@ -41,11 +41,29 @@ function popupAlert(message, alert_classtype, extraFunction_before, extraFunctio
 }
 
 function ingredientStringToArray(stringData) {
-    return stringData.split(',').map(function (val) { return val.trim() }).filter(Boolean);
+    var ingredientArray = stringData.split(',').map(function (val) { return val.trim() }).filter(Boolean);
+    var returnFormat = "";
+    for (i = 1; i <= ingredientArray.length; i++) {
+        if (i === 1) {
+            returnFormat += i + ". " + ingredientArray[i - 1];
+        } else {
+            returnFormat += "<br>" + i + ". " + ingredientArray[i - 1];
+        }
+    }
+    return returnFormat;
 }
 
 function directionStringToArray(stringData) {
-    return stringData.replace(/(\r\n)|(\n\r)/g, '\n').split('\n').map(function (val) { return val.trim() }).filter(Boolean);
+    var directionArray = stringData.replace(/(\r\n)|(\n\r)/g, '\n').split('\n').map(function (val) { return val.trim() }).filter(Boolean);
+    var returnFormat = "";
+    for (i = 1; i <= directionArray.length; i++) {
+        if (i === 1) {
+            returnFormat += i + ". " + directionArray[i - 1];
+        } else {
+            returnFormat += "<br>" + i + ". " + directionArray[i - 1];
+        }
+    }
+    return returnFormat;
 }
 
 document.addEventListener('DOMContentLoaded', function () {

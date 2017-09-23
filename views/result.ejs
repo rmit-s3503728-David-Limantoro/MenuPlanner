@@ -10,9 +10,7 @@
             <a href="/upload" target="_self">
                 <span>Upload</span></a>
             <a href="/recipe" target="_self">
-                <span>Recipe</span></a>
-            <a href="/result" target="_self">
-                    <span>Result</span></a>
+                <span>All Recipe</span></a>
 
             <div class="search">
                 <form action="/search" method="POST">
@@ -38,6 +36,8 @@
                         <td>
                             <% if(result.Items[i].img) { %>
                                 <img src="<%= result.Items[i].img %>"/>
+                            <% } else { %>
+                                No Image
                             <% } %>
                         </td>
                     </tr>

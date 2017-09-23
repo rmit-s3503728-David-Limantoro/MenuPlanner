@@ -13,7 +13,6 @@ AWS.config.update({
   endpoint: "https://dynamodb.us-west-2.amazonaws.com"
 });
 var docClient = new AWS.DynamoDB.DocumentClient();
-
 var tblName = "RecipeTable";
 
 module.exports = {
@@ -29,7 +28,7 @@ module.exports = {
       TableName: tblName,
       KeyConditionExpression: 'recipeID = :v1',
       ExpressionAttributeValues: {
-        ':v1': 'recipeID',
+        ':v1': recipeID,
       }
     };
     docClient.query(params, function (err, data) {

@@ -41,7 +41,8 @@ module.exports.routes = {
   },
     
   'GET /recipe': {
-    view: 'recipe'
+    controller: 'RecipeController',
+    action: 'loadRecipePage'
   },
     
   'GET /upload': {

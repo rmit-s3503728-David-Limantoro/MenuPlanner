@@ -2,8 +2,6 @@
     Food Recipe
 </header>
 
-
-
 <body id="HomePage">
     <div>
         <nav>
@@ -13,9 +11,7 @@
             <a href="/upload" target="_self">
             <span>Upload</span></a>
             <a href="/recipe" target="_self">
-            <span>Recipe</span></a>
-            <a href="/result" target="_self">
-                <span>Result</span></a>
+            <span>All Recipe</span></a>
 
             <div class="search">
                 <form action="/search" method="POST">
@@ -29,14 +25,18 @@
     </div>
 
     <div>
-        <table class="recipeform">
+        <table class="recipeform" style="width:90%; margin-left: auto; margin-right: auto; border-radius: 10px">
+            <col width="40%">
+            <col width="60%">
             <caption>Recipe List</caption>
             <tr>
                 <th colspan="2">Title</th>
             </tr>
 
             <tr>
-                <td colspan="2">$title</td>
+                <td colspan="2">
+                    <%= result.Items[0].title %>
+                </td>
             </tr>
 
             <tr>
@@ -45,8 +45,9 @@
 
             <tr>
                 <td colspan="2">
-                    <$img>
-                    </$img>
+                    <% if(result.Items[0].img) { %>
+                        <img src="<%= result.Items[i].img %>" />
+                    <% } %>
                 </td>
             </tr>
 
@@ -55,7 +56,9 @@
             </tr>
 
             <tr>
-                <td colspan="2">$introduction</td>
+                <td colspan="2">
+                    <%= result.Items[0].introduction %>
+                </td>
             </tr>
 
             <tr>
@@ -64,8 +67,12 @@
             </tr>
 
             <tr>
-                <td>$level</td>
-                <td>$yield</td>
+                <td>
+                    <%= result.Items[0].level %>
+                </td>
+                <td>
+                    <%= result.Items[0].yield %>
+                </td>
             </tr>
 
             <tr>
@@ -74,8 +81,8 @@
             </tr>
 
             <tr>
-                <th>$ingredient</th>
-                <th>$direction</th>
+                <th><label id="ingr_label"></label></th>
+                <th><label id="dir_label"></label></th>
             </tr>
         </table>
     </div>
@@ -91,3 +98,8 @@
         </ul>
     </footer>
 </div>
+
+<script>
+    document.getElementById("ingr_label").innerHTML = ingredientStringToArray(`<%= result.Items[0].ingredients %>`);
+    document.getElementById("dir_label").innerHTML = directionStringToArray(`<%= result.Items[0].direction %>`);
+</script>
