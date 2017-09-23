@@ -191,8 +191,47 @@ margin: 8px 0;
 }
 
 
+/*resultpage*/
+.resulttable {
+  width:100%;
+  height:auto;
+  border:6px solid #203B71;
+  background: linear-gradient(to left, #C7D8C6 0%,#EFD9C1 100%);
+}
+.resulttable ul{
+  list-style-type: none;
+}
 
+.resulttable table{
+  width:100%;
+  padding: 2%;
+  
+}
+/*settle the image size*/
+.resulttable image{
+  width:800px;
+  height:550px;
+  
+}
+.resulttable th{
+  border:4px solid #A7CDCE;
+  color:deeppink;
+  font-size:xx-large;
+  font-weight:600;
+  text-align: center;
+}
 
+.resulttable tr, td{
+  border:2px solid #345DA4;
+  font-size:x-large;
+  font-weight:800;
+}
+/*intro part for result page*/
+
+.intro {
+  color:#550000;
+  background-color:#DAA400;
+}
 /*footer*/
 #footer {
 border-top:solid 5px #888888;    
