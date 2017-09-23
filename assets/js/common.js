@@ -22,22 +22,30 @@ function getUrlParameter(sParam) {
 };
 
 function popupAlert(message, alert_classtype, extraFunction_before, extraFunction_after) {
-  if (!(extraFunction_before === undefined || extraFunction_before === null)) {
-    extraFunction_before();
-  }
-  $('#floatAlertDiv').addClass(alert_classtype);
-  $('#floatAlertDiv').text(message);
-  $('#floatAlertDiv').slideDown("slow", function () {
-    setTimeout(function () {
-      $('#floatAlertDiv').slideUp("slow", function () {
-        $('#floatAlertDiv').removeClass(alert_classtype);
-        $('#floatAlertDiv').text("");
-        if (!(extraFunction_after === undefined || extraFunction_after === null)) {
-          extraFunction_after();
-        }
-      })
-    }, 2000);
-  });
+    if (!(extraFunction_before === undefined || extraFunction_before === null)) {
+        extraFunction_before();
+    }
+    $('#floatAlertDiv').addClass(alert_classtype);
+    $('#floatAlertDiv').text(message);
+    $('#floatAlertDiv').slideDown("slow", function () {
+        setTimeout(function () {
+            $('#floatAlertDiv').slideUp("slow", function () {
+                $('#floatAlertDiv').removeClass(alert_classtype);
+                $('#floatAlertDiv').text("");
+                if (!(extraFunction_after === undefined || extraFunction_after === null)) {
+                    extraFunction_after();
+                }
+            })
+        }, 2000);
+    });
+}
+
+function ingredientStringToArray(stringData) {
+    return stringData.split(',').map(function (val) { return val.trim() });
+}
+
+function directionStringToArray(stringData) {
+    return stringData.replace(/(\r\n)|(\n\r)/g, '\n').split('\n').map(function (val) { return val.trim() });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
