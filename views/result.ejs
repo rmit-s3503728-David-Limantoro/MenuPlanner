@@ -25,29 +25,31 @@
     <div class="resulttable">
         <ul>
             <% for(i=0;i<result.Items.length;i++){ %>
-            <li>
-                <table>
-                    <tr>
-                        <th>
-                            <a href="/recipe?id=<%= result.Items[i].recipeID %>"><%= result.Items[i].title %></a>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <% if(result.Items[i].img) { %>
-                                <img src="<%= result.Items[i].img %>"/>
-                            <% } else { %>
-                                No Image
-                            <% } %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="intro">
-                                <a href="/recipe?id=<%= result.Items[i].recipeID %>"><%= result.Items[i].introduction %></a>
-                        </td>
-                    </tr>
-                </table>
-            </li>
+                <li>
+                    <table>
+                        <tr>
+                            <th>
+                                <a href="/recipe?id=<%= result.Items[i].recipeID %>">
+                                    <%= result.Items[i].title %>
+                                </a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <% if(result.Items[i].img) { %>
+                                    <img src="<%= result.Items[i].img %>" />
+                                <% } else { %>
+                                    No Image
+                                <% } %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="intro">
+                                <%= result.Items[i].introduction %>
+                            </td>
+                        </tr>
+                    </table>
+                </li>
             <% } %>
         </ul>
     </div>
