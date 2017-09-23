@@ -48,6 +48,10 @@ module.exports.routes = {
     view: 'upload'
   },    
 
+  'GET /result': {
+    view: 'result'
+  },   
+
   ///////////////////////////
   //// Controller Routes ////
   ///////////////////////////
