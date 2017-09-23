@@ -13,9 +13,13 @@
             <span>Upload</span></a>
             <a href="/recipe" target="_self">
             <span>Recipe</span></a>
+            <a href="/result" target="_self">
+                <span>Result</span></a>
 
             <div class="search">
-                <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                <form action="/search" method="POST">
+                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                </form>
             </div>
         </nav>
     </div>
@@ -54,7 +58,7 @@
 
             <label><b>Ingredients</b></label>
             <input type="text" type="text" placeholder="What ingredients are needed (separate with comma)" name="ingredients" required>
-           
+
             <label><b>Directions</b></label>
             <textarea type="textarea" placeholder="Tell us how to make this recipe" name="direction" required></textarea>
 
@@ -82,11 +86,12 @@
 </div>
 
 <script>
-    function clearInputs(){
+    function clearInputs() {
         var inputs, index;
-        inputs = document.getElementsByTagName('input','textarea');
+        inputs = document.getElementsByTagName('input', 'textarea');
         for (index = 0; index < inputs.length; ++index) {
             inputs[index].value = '';
         }
     }
+
 </script>

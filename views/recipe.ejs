@@ -15,11 +15,14 @@
             <span>Upload</span></a>
             <a href="/recipe" target="_self">
             <span>Recipe</span></a>
+            <a href="/result" target="_self">
+                <span>Result</span></a>
 
 
             <div class="search">
-                <input type="text" class="searchTerm" placeholder="What are you looking for?">
-
+                <form action="/search" method="POST">
+                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                </form>
             </div>
 
         </nav>
@@ -28,10 +31,57 @@
 
 
 
-<form>
     <div>
-        <label><b>Title</b></label>
-        <input type="text" placeholder="Enter Title" name="title" required>
+
+        <table class="recipeform">
+            <caption>Recipe List</caption>
+            <tr>
+                <th colspan="2">Title</th>
+            </tr>
+
+            <tr>
+                <td colspan="2">$title</td>
+            </tr>
+
+            <tr>
+                <th colspan="2">Image</th>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <$img>
+                    </$img>
+                </td>
+            </tr>
+
+            <tr>
+                <th colspan="2">Introduction:</th>
+            </tr>
+
+            <tr>
+                <td colspan="2">$introduction</td>
+            </tr>
+
+            <tr>
+                <th>Level</th>
+                <th>Yield</th>
+            </tr>
+
+            <tr>
+                <td>$level</td>
+                <td>$yield</td>
+            </tr>
+
+            <tr>
+                <th>Ingredient</th>
+                <th>Direction</th>
+            </tr>
+
+            <tr>
+                <th>$ingredient</th>
+                <th>$direction</th>
+            </tr>
+        </table>
 
 
 
@@ -40,7 +90,7 @@
     </div>
 
 
-</form>
+    </form>
 
 
 
