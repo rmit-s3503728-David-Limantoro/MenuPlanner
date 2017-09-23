@@ -19,7 +19,6 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 //   else     console.log(data);           // successful response
 // });
 
-var formidable = require('formidable');
 var uuid = require('node-uuid');
 
 module.exports = {
@@ -31,14 +30,15 @@ module.exports = {
 
   newRecipe: function (req, res) {
     req.file('avatar').upload({
-      // don't allow the total upload size to exceed ~10MB
-      maxBytes: 10 * 1000 * 1000
-    }, function whenDone(err, uploadedFiles) {
+      maxBytes: 10000000,
+      dirname: './my-dir'
+    }, function (err, uploadedFiles) {
       if (err) {
         return res.negotiate(err);
       }
 
       // If no files were uploaded, respond with an error.
+      console.log(err);
       console.log(uploadedFiles);
 
       // // Save the "fd" and the url where the avatar for a user can be accessed
@@ -58,9 +58,6 @@ module.exports = {
       var body_introduction = req.body.introduction;
       var body_ingredients = req.body.ingredients;
       var body_direction = req.body.direction;
-
-      body_ingredients = body_ingredients.split(',');
-      body_direction = body_direction.replace(/\r/g, '\n').replace(/\n\n/g, '\n').split('\n');
 
       var item = {
         recipeID: uuid.v4(),
@@ -89,15 +86,16 @@ module.exports = {
     });
   },
 
-  // updateRecipe: function (req, res) {
-  //   console.log(req.body);
-  //   var body_title = req.body.title;
-  //   var body_level = req.body.level;
-  //   var body_yield = req.body.yield;
-  //   var body_intro = req.body.intro;
-  //   var body_ingredients = req.body.ingredients;
-  //   var body_direction = req.body.direction;
-  //   res.send(200, { message: "Update existing recipe", body: req.body });
-  // },
+  updateRecipe: function (req, res) {
+    console.log(req.body);
+    var body_title = req.body.title;
+    var body_level = req.body.level;
+    var body_yield = req.body.yield;
+    var body_intro = req.body.intro;
+    var body_ingredients = req.body.ingredients;
+    var body_direction = req.body.direction;
+    res.send(200, { message: "Update existing recipe", body: req.body });
+  },
+
 };
 
