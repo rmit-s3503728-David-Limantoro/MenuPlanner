@@ -112,6 +112,15 @@ padding: 0px;
 
 }
 
+.homepagetext {
+  margin: 0 auto;
+    text-align: center;
+    width:80%;
+    color:blueviolet;
+    font-size:20px;
+    background-color:#FFFFFF;
+    
+}
 
 
 
@@ -124,7 +133,10 @@ padding: 0px;
 
 .uploadform {
     padding: 1%;
+    float: left;
 }
+
+
 
 .uploadform input[type=text] {
     width: 100%;
@@ -133,6 +145,11 @@ padding: 0px;
     display: inline-block;
     border: 1px solid #00B4CC;
     box-sizing: border-box;
+}
+.uploadform textarea{
+width:100%;
+height:100px;
+border: 1px solid #00B4CC;
 }
 
 button {
@@ -165,6 +182,7 @@ width: 50%;
   clear: both;
   display: table;
 }
+
 
 /*recipe*/
 
