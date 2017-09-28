@@ -13,7 +13,8 @@
             <a href="/recipe" target="_self">
             <span>All Recipe</span></a>
             <a href="/login" target="_self">
-                <span>Login</span></a>
+            <span>Login</span></a>
+
 
 
             <div class="search">
@@ -27,13 +28,27 @@
         </nav>
     </div>
 
-    <div class="homepagetext">
-        <p> This project is to guide users through the steps of cooking and display detailed ingredients what users need to prepare
-            before cook. The purpose of the project is to help users easy to making food. We are focus the users who want
-            to making food more easily and have a briefly recipe page of one dish. Moreover, users also able to upload their
-            recipe to the cloud therefore the other users can download or search different dishes’ name. The benefits of
-            the project is make life easier and save times. This project is based on webpage to display the datas from cloud
-            and also had webpage to download the data ( recipe) from the cloud. </p>
+    <div class="login">
+        <form action="/login" method="POST" class="form">
+            <fieldset>
+                <legend>Existing Users Log In</legend>
+                <label for="log">Username</label>
+                <div class="div_text">
+                    <input name="log" type="text" id="log" value="" class="username"></div><label for="pwd">Password</label>
+                <div
+                    class="div_text"><input name="pwd" type="password" id="pwd" class="password"></div><input name="redirect_to" type="hidden"
+        value="/login"><input name="a" type="hidden" value="login">
+    <div class="button_div"><input name="rememberme" type="checkbox" id="rememberme" value="forever">&nbsp;<label for="rememberme">Remember Me</label>&nbsp;&nbsp;
+        <input
+            type="submit" name="Submit" value="Log In" class="buttons"></div>
+    <div align="right" class="link-text">Forgot password?&nbsp;<a href="/pwdreset">Click here to reset</a></div>
+    <div align="right"
+        class="link-text">New User?&nbsp;<a href="/register/">Click here to register</a></div>
+    </fieldset>
+    </form>
+
+
+
     </div>
 
 </body>

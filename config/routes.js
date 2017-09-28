@@ -53,6 +53,18 @@ module.exports.routes = {
     view: 'result'
   },   
 
+  'Get /login': {
+    view:'login'
+  },
+
+  'Get /register': {
+    view:'register'
+  },
+
+  'Get /pwdreset': {
+    view:'pwdreset'
+  },
+
   ///////////////////////////
   //// Controller Routes ////
   ///////////////////////////

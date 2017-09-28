@@ -11,6 +11,8 @@
                 <span>Upload</span></a>
             <a href="/recipe" target="_self">
                 <span>All Recipe</span></a>
+            <a href="/login" target="_self">
+                    <span>Login</span></a>
 
             <div class="search">
                 <form action="/search" method="POST">
@@ -38,9 +40,9 @@
                             <td>
                                 <% if(result.Items[i].img) { %>
                                     <img src="<%= result.Items[i].img %>" />
-                                <% } else { %>
-                                    No Image
-                                <% } %>
+                                    <% } else { %>
+                                        No Image
+                                        <% } %>
                             </td>
                         </tr>
                         <tr>
@@ -50,7 +52,7 @@
                         </tr>
                     </table>
                 </li>
-            <% } %>
+                <% } %>
         </ul>
     </div>
 </body>
