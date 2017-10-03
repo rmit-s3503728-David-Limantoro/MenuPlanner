@@ -1,65 +1,80 @@
 <header id="header">
-    Menu Planner
+  Menu Planner
 </header>
 
 <body id="HomePage">
-    <div>
-        <nav>
+  <div>
+    <nav>
 
-            <a href="/" target="_self">
+      <a href="/" target="_self">
             <span>Home</span></a>
-            <a href="/upload" target="_self">
+      <a href="/upload" target="_self">
             <span>Upload</span></a>
-            <a href="/recipe" target="_self">
+      <a href="/recipe" target="_self">
             <span>All Recipe</span></a>
-            <a href="/login" target="_self">
+      <a href="/login" target="_self">
             <span>Login</span></a>
 
 
 
-            <div class="search">
-                <form action="/search" method="POST">
-                    <input type="text" name="searchTerm" class="searchTerm" placeholder="What are you looking for?">
-                    <input name="withoutRedirect" value="false" style="display:none">
-                    <input type="submit" value="Submit" style="display:none">
-                </form>
-            </div>
+      <div class="search">
+        <form action="/search" method="POST">
+          <input type="text" name="searchTerm" class="searchTerm" placeholder="What are you looking for?">
+          <input name="withoutRedirect" value="false" style="display:none">
+          <input type="submit" value="Submit" style="display:none">
+        </form>
+      </div>
 
-        </nav>
-    </div>
+    </nav>
+  </div>
 
-    <div class="login">
-        <form action="/login" method="POST" class="form">
-            <fieldset>
-                <legend>Existing Users Log In</legend>
-                <label for="log">Username</label>
-                <div class="div_text">
-                    <input name="log" type="text" id="log" value="" class="username"></div><label for="pwd">Password</label>
-                <div
-                    class="div_text"><input name="pwd" type="password" id="pwd" class="password"></div><input name="redirect_to" type="hidden"
-        value="/login"><input name="a" type="hidden" value="login">
-    <div class="button_div"><input name="rememberme" type="checkbox" id="rememberme" value="forever">&nbsp;<label for="rememberme">Remember Me</label>&nbsp;&nbsp;
-        <input
-            type="submit" name="Submit" value="Log In" class="buttons"></div>
-    <div align="right" class="link-text">Forgot password?&nbsp;<a href="/pwdreset">Click here to reset</a></div>
-    <div align="right"
-        class="link-text">New User?&nbsp;<a href="/register/">Click here to register</a></div>
-    </fieldset>
+  <div class="login">
+    <form action="/login" method="POST" class="form">
+      <fieldset>
+
+        <legend>Existing Users Log In</legend>
+
+        <label for="log">Username</label>
+
+        <div class="div_text">
+          <input name="log" type="text" id="log" value="" class="username">
+        </div><label for="pwd">Password</label>
+
+        <div class="div_text"><input name="pwd" type="password" id="pwd" class="password"></div>
+
+        <input name="redirect_to" type="hidden" value="/login">
+        <input name="a" type="hidden" value="login">
+
+        <div class="button_div">
+          <input name="rememberme" type="checkbox" id="rememberme" value="forever">&nbsp;
+          <label for="rememberme">Remember Me</label>&nbsp;&nbsp;
+          <input type="submit" name="Submit" value="Log In" class="buttons">
+        </div>
+
+        <div align="right" class="link-text">Forgot password?&nbsp;
+          <a href="/pwdreset">Click here to reset</a>
+        </div>
+        
+        <div align="right" class="link-text">New User?&nbsp;
+          <a href="/register/">Click here to register</a>
+        </div>
+
+      </fieldset>
     </form>
 
 
 
-    </div>
+  </div>
 
 </body>
 
 
 <div id="footer">
-    <footer>
-        <ul>
-            <li>Click <a href="#top"><img src="https://png.icons8.com/north-direction/office/25" title="Go Top" ></a> to see
-                the top of this page</li>
-            <li>Please contact <a href="mailto:s3510520@student.rmit.edu.au.com">Yan</a> for more deatils</li>
-        </ul>
-    </footer>
+  <footer>
+    <ul>
+      <li>Click <a href="#top"><img src="https://png.icons8.com/north-direction/office/25" title="Go Top" ></a> to see the top
+        of this page</li>
+      <li>Please contact <a href="mailto:s3510520@student.rmit.edu.au.com">Yan</a> for more deatils</li>
+    </ul>
+  </footer>
 </div>

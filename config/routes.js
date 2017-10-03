@@ -110,6 +110,23 @@ module.exports.routes = {
     action: 'loadRecipe'
   },
 
+  // Authentication related
+  
+  'POST /register': {
+    controller: 'AuthenticationController',
+    action: 'register'
+  },
+  
+  'POST /login': {
+    controller: 'AuthenticationController',
+    action: 'login'
+  },
+  
+  'GET /logout': {
+    controller: 'AuthenticationController',
+    action: 'logout'
+  },
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
