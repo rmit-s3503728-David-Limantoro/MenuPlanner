@@ -199,7 +199,11 @@ outline: 2px solid #00B4CC;
 border-collapse: collapse;
 padding: 12px 20px;
 margin: 8px 0;
+}
 
+.recipeform img{
+  width:500px;
+  height:600px;
 
 }
 
