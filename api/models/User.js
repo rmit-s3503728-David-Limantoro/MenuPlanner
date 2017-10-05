@@ -24,13 +24,13 @@ module.exports = {
     },
   },
 
-  // beforeCreate: function (values, cb) {
-  //   bcrypt.hash(values.password, 10, function(err, hash) {
-  //     if(err) return cb(err);
-  //     values.password = hash;
-  //     cb();
-  //   });
-  // },
+  beforeCreate: function (values, cb) {
+    bcrypt.hash(values.password, 10, function(err, hash) {
+      if(err) return cb(err);
+      values.password = hash;
+      cb();
+    });
+  },
 
   findByUsername: function (username, callback) {
     User.findOne({

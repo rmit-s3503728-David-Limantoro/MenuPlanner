@@ -33,22 +33,15 @@ function validatePasswordAndLogIn(req, password, done, err, user) {
   // Catch any errors during find:
   if (err || !user) return done(null, false);
 
-  // Check password:
-  // bcrypt.compare(password, user.password).then(function (res) {
-  //   if (res == false) {
-  //     // Return error if comparison fails:
-  //     return done(null, false);
-  //   }
+  bcrypt.compare(password, user.password).then(function (res) {
+    if (res == false) {
+      // Return error if comparison fails:
+      return done(null, false);
+    }
 
-  //   // Successful return:
-  //   return done(null, user);
-  // });
-
-  if (password !== user.password) {
-    return done(null, false);
-  } else {
+    // Successful return:
     return done(null, user);
-  }
+  });
 }
 
 passport.serializeUser(function (user, done) {
