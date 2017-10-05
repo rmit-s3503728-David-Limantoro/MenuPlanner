@@ -16,9 +16,12 @@ passport.use(new LocalStrategy({
 }, function (req, login, password, done) {
   process.nextTick(function () {
     User.findOne({
-      or : [
-        { username: login },
-        { email: login }
+      or: [{
+          username: login
+        },
+        {
+          email: login
+        }
       ],
     }).exec(function (err, user) {
       validatePasswordAndLogIn(req, password, done, err, user);
@@ -31,15 +34,21 @@ function validatePasswordAndLogIn(req, password, done, err, user) {
   if (err || !user) return done(null, false);
 
   // Check password:
-  bcrypt.compare(password, user.password).then(function (res) {
-    if (res == false) {
-      // Return error if comparison fails:
-      return done(null, false);
-    }
+  // bcrypt.compare(password, user.password).then(function (res) {
+  //   if (res == false) {
+  //     // Return error if comparison fails:
+  //     return done(null, false);
+  //   }
 
-    // Successful return:
+  //   // Successful return:
+  //   return done(null, user);
+  // });
+
+  if (password !== user.password) {
+    return done(null, false);
+  } else {
     return done(null, user);
-  });
+  }
 }
 
 passport.serializeUser(function (user, done) {

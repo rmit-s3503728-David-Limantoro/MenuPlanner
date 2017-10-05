@@ -36,7 +36,7 @@ module.exports = {
         from: emailAddr,
         to: user.email,
         subject: 'Your lost password',
-        text: 'Your password is ',
+        text: 'Your password is "' + user.password + '"',
       };
 
       transporter.sendMail(mailOptions, function (error, info) {
