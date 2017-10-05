@@ -22,6 +22,8 @@ module.exports.http = {
   ****************************************************************************/
 
   middleware: {
+    passportInit    : require('passport').initialize(),
+    passportSession : require('passport').session(),
 
   /***************************************************************************
   *                                                                          *
@@ -34,6 +36,8 @@ module.exports.http = {
       'startRequestTimer',
       'cookieParser',
       'session',
+      'passportInit',            // <==== passport HTTP middleware should run after "session"
+      'passportSession',         // <==== (see https://github.com/jaredhanson/passport#middleware)
       'myRequestLogger',
       'bodyParser',
       'handleBodyParserError',

@@ -73,5 +73,11 @@ document.addEventListener('DOMContentLoaded', function () {
         popupAlert("There is a problem uploading the recipe", "alert-error");
     } else if (getUrlParameter('filesize') === "invalid") {
         popupAlert("The filesize is too big, please upload smaller picture", "alert-error");
+    } else if (getUrlParameter('registerSuccess') === "true") {
+        popupAlert("You are registered! Please login to start uploading recipe", "alert-success");
+    } else if (getUrlParameter('registerSuccess') === "false") {
+        popupAlert("Invalid registration data", "alert-error");
+    } else if (getUrlParameter('loggedOut') === "true") {
+        popupAlert("You are logged out", "alert-success");
     }
 }, false);

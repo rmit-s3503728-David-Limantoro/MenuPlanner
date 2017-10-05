@@ -23,7 +23,6 @@ module.exports = {
       required: true
     },
   },
-  
 
   beforeCreate: function (values, cb) {
     bcrypt.hash(values.password, 10, function(err, hash) {

@@ -1,32 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
 
-    <!-- Viewport mobile tag for sensible mobile support -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <title>Menu Planner</title>
 
-    <!--STYLES-->
-    <link rel="stylesheet" href="/styles/importer.css">
-    <link rel="stylesheet" href="/styles/Recipe.css">
-    <link rel="stylesheet" href="/styles/style.css">
-    <!--STYLES END-->
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!--SCRIPTS-->
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/dependencies/jquery-3.2.1.min.js"></script>
-    <script src="/js/common.js"></script>
-    <!--SCRIPTS END-->
-    
-  </head>
+  <!--STYLES-->
+  <link rel="stylesheet" href="/styles/importer.css">
+  <link rel="stylesheet" href="/styles/Recipe.css">
+  <link rel="stylesheet" href="/styles/style.css">
+  <!--STYLES END-->
 
-  <body>
-    <%- body %>
+  <!--SCRIPTS-->
+  <script src="/js/dependencies/sails.io.js"></script>
+  <script src="/js/dependencies/jquery-3.2.1.min.js"></script>
+  <script src="/js/common.js"></script>
+  <!--SCRIPTS END-->
+
+</head>
+
+<header id="header">
+  <%=typeof title == 'undefined' ? 'New Sails App' : title%>
+</header>
+
+<body>
+  <div>
+    <nav>
+      <a href="/" target="_self"><span>Home</span></a>
+      <a href="/recipe" target="_self"><span>All Recipe</span></a>
+      <% if (req.user){ %>
+        <a href="/upload" target="_self"><span>Upload</span></a>
+      <% } else { %>
+        <a href="/login" target="_self"><span>Login</span></a>
+      <% }%>
+      
+      <div class="search">
+        <form action="/search" method="POST">
+          <input type="text" name="searchTerm" class="searchTerm" placeholder="What are you looking for?">
+          <input name="withoutRedirect" value="false" style="display:none">
+          <input type="submit" value="Submit" style="display:none">
+        </form>
+      </div>
+
+      <% if (req.user){ %>
+        <a href="/logout" target="_self" style="padding-left:128px"><span>Log Out</span></a>
+      <% }%>
+        
+    </nav>
+  </div>
+
+  <%- body %>
+
     <div id="floatAlertDiv" class="alert" style="display: none;"></div>
 
     <!--TEMPLATES-->
     
     <!--TEMPLATES END-->
 
-  </body>
+</body>
+
 </html>
