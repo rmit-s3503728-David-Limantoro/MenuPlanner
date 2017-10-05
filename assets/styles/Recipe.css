@@ -251,6 +251,13 @@ margin: 8px 0;
   color: #ffffff;
 }
 
+.form #resetpwd{
+  color: rgb(255, 230, 0);
+  font-size: 20px;
+  font-weight: 700;
+
+}
+
 .link-text{
   color: #ffe6f2;
 }
