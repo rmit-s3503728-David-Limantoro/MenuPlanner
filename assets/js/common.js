@@ -57,9 +57,9 @@ function directionStringToArray(stringData) {
     var directionArray = stringData.replace(/(\r\n)|(\n\r)/g, '\n').split('\n').map(function (val) { return val.trim() }).filter(Boolean);
     var returnFormat = "";
     for (i = 1; i <= directionArray.length; i++) {
-        if (i === 1) {
+        if (i === 1) { // first direction line
             returnFormat += i + ". " + directionArray[i - 1];
-        } else {
+        } else { // second and onward direction lines
             returnFormat += "<br>" + i + ". " + directionArray[i - 1];
         }
     }
@@ -74,10 +74,14 @@ document.addEventListener('DOMContentLoaded', function () {
     } else if (getUrlParameter('filesize') === "invalid") {
         popupAlert("The filesize is too big, please upload smaller picture", "alert-error");
     } else if (getUrlParameter('registerSuccess') === "true") {
-        popupAlert("You are registered! Please login to start uploading recipe", "alert-success");
+        popupAlert("You are registered! Please login to start uploading recipe", "alert-ok");
     } else if (getUrlParameter('registerSuccess') === "false") {
         popupAlert("Invalid registration data", "alert-error");
     } else if (getUrlParameter('loggedOut') === "true") {
-        popupAlert("You are logged out", "alert-success");
+        popupAlert("You are logged out", "alert-ok");
+    } else if (getUrlParameter('passRequest') === "false") {
+        popupAlert("No user with this email/username is found", "alert-error");
+    } else if (getUrlParameter('passRequest') === "true") {
+        popupAlert("Email containing your password has been sent to your registered email", "alert-ok");
     }
 }, false);

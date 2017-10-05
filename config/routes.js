@@ -122,6 +122,11 @@ module.exports.routes = {
     action: 'login'
   },
   
+  'POST /resetPassword': {
+    controller: 'ResetPassController',
+    action: 'resetPassword'
+  },
+  
   'GET /logout': {
     controller: 'AuthenticationController',
     action: 'logout'

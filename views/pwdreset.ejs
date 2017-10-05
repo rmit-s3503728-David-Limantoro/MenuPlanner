@@ -1,8 +1,10 @@
 <body id="HomePage">
   <fieldset>
     <legend>Reset Forgotten Password</legend><label for="user">Username/Email</label>
-    <div class="div_text"><input name="username_email" type="text" id="user" value="" class="username"></div>
-    <div class="button_div"><input type="submit" name="Submit" value="Reset Password" class="buttons"></div>
+    <form action="/resetPassword" method="POST">
+      <div class="div_text"><input name="login" type="text" id="user" value="" class="username"></div>
+      <div class="button_div"><input type="submit" name="Submit" value="Reset Password" class="buttons"></div>
+    </form>
   </fieldset>
 </body>
 

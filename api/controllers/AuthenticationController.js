@@ -10,31 +10,36 @@ var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt');
 
 passport.use(new LocalStrategy({
-	usernameField: 'log',
-	passwordField: 'pwd',
-	passReqToCallback: true
-}, function (req, username, password, done) {
-	process.nextTick(function () {
-		User.findOne({ username: username }).exec(function (err, user) {
-			validatePasswordAndLogIn(req, password, done, err, user);
-		});
-	});
+  usernameField: 'log',
+  passwordField: 'pwd',
+  passReqToCallback: true
+}, function (req, login, password, done) {
+  process.nextTick(function () {
+    User.findOne({
+      or : [
+        { username: login },
+        { email: login }
+      ],
+    }).exec(function (err, user) {
+      validatePasswordAndLogIn(req, password, done, err, user);
+    });
+  });
 }));
 
 function validatePasswordAndLogIn(req, password, done, err, user) {
-	// Catch any errors during find:
-	if (err || !user) return done(null, false);
+  // Catch any errors during find:
+  if (err || !user) return done(null, false);
 
-	// Check password:
-	bcrypt.compare(password, user.password).then(function (res) {
-		if (res == false) {
-			// Return error if comparison fails:
-			return done(null, false);
-		}
+  // Check password:
+  bcrypt.compare(password, user.password).then(function (res) {
+    if (res == false) {
+      // Return error if comparison fails:
+      return done(null, false);
+    }
 
-		// Successful return:
-		return done(null, user);
-	});
+    // Successful return:
+    return done(null, user);
+  });
 }
 
 passport.serializeUser(function (user, done) {
@@ -83,14 +88,16 @@ module.exports = {
   },
 
   login: function (req, res, next) {
-		return passport.authenticate('local', {},
+    return passport.authenticate('local', {},
       function (err, user) {
         if (err) next(err);
 
         if (user) {
           // If valid user found, log in:
           req.logIn(user, function (err) {
-            if (err) return done(null, false, { message: err });
+            if (err) return done(null, false, {
+              message: err
+            });
             return res.redirect("/?loginSuccess=true");
           });
         } else {
@@ -98,7 +105,7 @@ module.exports = {
         }
       }
     )(req, res, next);
-},
+  },
 
   logout: function (req, res, next) {
     req.logout();
