@@ -74,6 +74,10 @@ nav a:hover::after {
   left: 0%;
 }
 
+.logout {
+margin-left:3%;
+}
+
 
 .search {
   width: 30%;
@@ -188,7 +192,7 @@ width: 50%;
 
 .recipeform {
 text-align: center;
-font-size:30px;
+font-size:20px;
 width:100%;
 height:auto;
 outline: 2px solid #00B4CC;
@@ -196,16 +200,58 @@ border-collapse: collapse;
 padding: 12px 20px;
 margin: 8px 0;
 
+
 }
 
 .recipeform td, th{
   border: 1px solid #A9B7C0;
+ 
 }
+.recipeformsoild {
+  font-size:40px;
+  color: #ff80bf;
+}
+
 
 .recipeform caption{
   font-size:50px;
   font-weight:700;
   color: deeppink;
+}
+
+.ingr{
+  line-height: 150%;
+  text-align: left;
+  color: #b30059;
+}
+
+.ingr #ingr_label a{
+  margin-left: 3%;
+  color: #404040;
+}
+
+.direc{
+  line-height: 150%;
+  text-align: left;
+}
+
+.direc #dir_label p{
+  margin-left:3%;
+  color: #595959;
+}
+
+/*login&register*/
+.form{
+  font-size: 20px;
+  background-color: #800040;
+  color: #ffffff;
+}
+
+.link-text{
+  color: #ffe6f2;
+}
+.link-text a{
+color: #b3e6ff;
 }
 
 

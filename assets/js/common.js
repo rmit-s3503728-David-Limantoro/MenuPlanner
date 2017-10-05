@@ -45,9 +45,9 @@ function ingredientStringToArray(stringData) {
     var returnFormat = "";
     for (i = 1; i <= ingredientArray.length; i++) {
         if (i === 1) {
-            returnFormat += i + ". " + ingredientArray[i - 1];
+            returnFormat +="<big>"+ "·</big> " + "<a>" + ingredientArray[i - 1] + "</a>";
         } else {
-            returnFormat += "<br>" + i + ". " + ingredientArray[i - 1];
+            returnFormat += "<br>" + "<big>"+ "·</big> " + "<a>" + ingredientArray[i - 1] + "</a>";
         }
     }
     return returnFormat;
@@ -57,11 +57,8 @@ function directionStringToArray(stringData) {
     var directionArray = stringData.replace(/(\r\n)|(\n\r)/g, '\n').split('\n').map(function (val) { return val.trim() }).filter(Boolean);
     var returnFormat = "";
     for (i = 1; i <= directionArray.length; i++) {
-        if (i === 1) {
-            returnFormat += i + ". " + directionArray[i - 1];
-        } else {
-            returnFormat += "<br>" + i + ". " + directionArray[i - 1];
-        }
+        
+            returnFormat +="<big>Step " + i + ".</big>" +"<p>"+directionArray[i - 1] +"</p>";
     }
     return returnFormat;
 }
