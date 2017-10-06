@@ -16,14 +16,12 @@ passport.use(new LocalStrategy({
 }, function (req, login, password, done) {
   process.nextTick(function () {
     User.findOne({
-      or: [{
-          username: login
-        },
-        {
-          email: login
-        }
+      or: [
+        { username: login },
+        { email: login }
       ],
     }).exec(function (err, user) {
+      if(err){throw err;}
       validatePasswordAndLogIn(req, password, done, err, user);
     });
   });
