@@ -7,6 +7,7 @@
 
 const nodemailer = require('nodemailer');
 var uuid = require('node-uuid');
+var bcrypt = require('bcrypt');
 
 var emailAddr = 'testert185@gmail.com';
 var emailPass = 'something';
@@ -23,8 +24,9 @@ module.exports = {
   resetChangePassword: function (req, res, next) {
     var token = req.body.token;
     var newPassword = req.body.password;
-    if (!newPassword || newPassword == "") {
-      res.send(400);
+    var newPasswordRepeat = req.body.passwordRepeat;
+    if (newPassword == "" || newPassword !== newPasswordRepeat) {
+      res.redirect("/pwdreset?token=" + token + "&resetPassword=false");
     } else {
       ResetPassToken.findOne({
         token: token
@@ -32,17 +34,24 @@ module.exports = {
         if (err) {
           return res.err()
         }
-        //TODO? encrypt password here
-        User.update({
-          email: match.associatedAccountEmail
-        }, {
-          password: newPassword,
-        }).exec(function (err, user) {
+
+        bcrypt.hash(newPassword, 10, function (err, hash) {
           if (err) {
-            throw err;
-          }
-          validatePasswordAndLogIn(req, password, done, err, user);
+            res.redirect("/pwdreset?token=" + token + "&resetPassword=error");
+          };
+          newPassword = hash;
+          User.update({
+            email: match.associatedAccountEmail
+          }, {
+            password: newPassword,
+          }).exec(function (err, user) {
+            if (err) {
+              res.redirect("/pwdreset?token=" + token + "&resetPassword=error");
+            };
+            return res.redirect("/?resetPassword=true");
+          });
         });
+
       });
     }
   },

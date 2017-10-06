@@ -67,21 +67,38 @@ function directionStringToArray(stringData) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+
   if (getUrlParameter('uploadSuccess') === "true") {
     popupAlert("Recipe is uploaded successfully", "alert-ok");
   } else if (getUrlParameter('uploadSuccess') === "false") {
     popupAlert("There is a problem uploading the recipe", "alert-error");
+
   } else if (getUrlParameter('filesize') === "invalid") {
     popupAlert("The filesize is too big, please upload smaller picture", "alert-error");
+
   } else if (getUrlParameter('registerSuccess') === "true") {
     popupAlert("You are registered! Please login to start uploading recipe", "alert-ok");
   } else if (getUrlParameter('registerSuccess') === "false") {
     popupAlert("Invalid registration data", "alert-error");
+
   } else if (getUrlParameter('loggedOut') === "true") {
     popupAlert("You are logged out", "alert-ok");
+
   } else if (getUrlParameter('passRequest') === "false") {
     popupAlert("No user with this email/username is found", "alert-error");
   } else if (getUrlParameter('passRequest') === "true") {
     popupAlert("Email containing your password has been sent to your registered email", "alert-ok");
+    
+  } else if (getUrlParameter('loginSuccess') === "true") {
+    popupAlert("You are now logged in!", "alert-ok");
+  } else if (getUrlParameter('loginSuccess') === "failed") {
+    popupAlert("Cannot login with provided information", "alert-error");
+
+  } else if (getUrlParameter('resetPassword') === "true") {
+    popupAlert("Password successfully changed!", "alert-ok");
+  } else if (getUrlParameter('resetPassword') === "false") {
+    popupAlert("Cannot change password, the password request might be expired", "alert-error");
+  } else if (getUrlParameter('resetPassword') === "error") {
+    popupAlert("Error with the password request", "alert-error");
   }
 }, false);

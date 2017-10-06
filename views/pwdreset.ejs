@@ -1,11 +1,25 @@
 <body id="HomePage">
-  <fieldset class="form">
-    <legend id="resetpwd" >Reset Forgotten Password</legend><label for="user">Username/Email</label>
+
+  <fieldset class="form" id="requestResetForm">
+    <legend id="resetpwd">Reset Forgotten Password</legend>
+    <label for="user">Username/Email</label>
     <form action="/resetPassword" method="POST">
-      <div class="div_text"><input name="login" type="text" id="user" value="" class="username"></div>
+      <div class="div_text"><input name="login" type="text" placeholder="Registered Username/Email"></div>
       <div class="button_div"><input type="submit" name="Submit" value="Reset Password" class="buttons"></div>
     </form>
   </fieldset>
+
+  <fieldset class="form" id="changePasswordForm">
+    <legend id="resetpwd">Reset Forgotten Password</legend>
+    <label for="user">New password and repeat password</label>
+    <form action="/resetChangePassword" method="POST">
+      <div class="div_text"><input name="password" type="password" placeholder="New Password"></div>
+      <div class="div_text"><input name="passwordRepeat" type="password" placeholder="New Password Repeat"></div>
+      <input id="tokenInput" name="token" type="text" style="display:none">
+      <div class="button_div"><input type="submit" name="Submit" value="Change Password"></div>
+    </form>
+  </fieldset>
+
 </body>
 
 
@@ -18,3 +32,15 @@
     </ul>
   </footer>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+    if (getUrlParameter("token") !== undefined) {
+      $("#requestResetForm").remove();
+      $("#tokenInput").val(getUrlParameter("token"))
+    } else {
+      $("#changePasswordForm").remove();
+    }
+  });
+
+</script>
