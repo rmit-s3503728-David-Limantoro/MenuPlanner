@@ -199,7 +199,11 @@ outline: 2px solid #00B4CC;
 border-collapse: collapse;
 padding: 12px 20px;
 margin: 8px 0;
+}
 
+.recipeform img{
+  width:500px;
+  height:600px;
 
 }
 
@@ -245,6 +249,13 @@ margin: 8px 0;
   font-size: 20px;
   background-color: #800040;
   color: #ffffff;
+}
+
+.form #resetpwd{
+  color: rgb(255, 230, 0);
+  font-size: 20px;
+  font-weight: 700;
+
 }
 
 .link-text{
