@@ -37,32 +37,53 @@ module.exports.routes = {
   /////////////////////
 
   'GET /': {
-    view: 'homepage'
+    view: 'homepage',
+    locals: {
+      title: "Menu Planner",
+    },
   },
     
   'GET /recipe': {
     controller: 'RecipeController',
-    action: 'loadRecipePage'
+    action: 'loadRecipePage',
+    locals: {
+      title: "All Recipe",
+    },
   },
     
   'GET /upload': {
-    view: 'upload'
+    view: 'upload',
+    locals: {
+      title: "Upload a Recipe",
+    },
   },    
 
   'GET /result': {
-    view: 'result'
+    view: 'result',
+    locals: {
+      title: "Search Result",
+    },
   },   
 
   'Get /login': {
-    view:'login'
+    view:'login',
+    locals: {
+      title: "Login Page",
+    },
   },
 
   'Get /register': {
-    view:'register'
+    view:'register',
+    locals: {
+      title: "Register Page",
+    },
   },
 
   'Get /pwdreset': {
-    view:'pwdreset'
+    view:'pwdreset',
+    locals: {
+      title: "Password Reset Page",
+    },
   },
 
   ///////////////////////////

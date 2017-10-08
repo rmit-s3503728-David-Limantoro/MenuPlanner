@@ -81,7 +81,8 @@ module.exports = {
           return res.send(200, { result: data })
         } else {
           return res.view('result', {
-            result: data
+            result: data,
+            title: "Search Result",
           });
         }
       }
