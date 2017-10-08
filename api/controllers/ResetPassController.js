@@ -63,7 +63,7 @@ module.exports = {
           username: credential
         },
         {
-          associatedAccountEmail: credential
+          email: credential
         }
       ],
     }).exec(function (err, user) {
